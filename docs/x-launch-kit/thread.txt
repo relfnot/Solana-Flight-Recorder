@@ -1,0 +1,62 @@
+1/8 A Solana transaction can be finalized and still fail execution.
+
+I'm building Solana Flight Recorder to make that distinction clear: take a transaction signature, inspect the available evidence, and turn it into a portable incident report.
+
+--------------------
+
+2/8 The MVP brings together:
+
+- Execution result + confirmation state
+- Filterable program logs
+- Fees + compute consumed
+- SOL balance changes
+- Raw RPC evidence
+
+Read-only. No wallet connection or signing.
+
+--------------------
+
+3/8 A real mainnet sample captured on Oct 11:
+
+Finalized, but execution failed.
+Fee: 19,820 lamports.
+Compute: 184,853 CU.
+55 log lines.
+
+The screenshot shows saved evidence, not a live lookup. Imported files are explicitly marked unverified.
+
+--------------------
+
+4/8 Missing evidence is not proof of a dropped transaction.
+
+Flight Recorder keeps RPC errors, unavailable data and on-chain execution errors separate, so the report doesn't invent a cause when the response doesn't establish one.
+
+--------------------
+
+5/8 Keep the investigation portable.
+
+The MVP includes JSON capture/import, Markdown incident reports and a local capture CLI.
+
+The mobile screenshot uses a labeled synthetic fixture. Real captures and demo data stay distinguishable.
+
+--------------------
+
+6/8 Built solo, scoped around less than 2 hours/day and a $0 infrastructure budget.
+
+Each lookup uses two RPC reads: getTransaction + getSignatureStatuses.
+
+The goal: a focused debugging workflow, with no continuous indexer required.
+
+--------------------
+
+7/8 Current status: MVP built; public-mainnet capture validated through the local CLI. Hosted live lookup still needs provider validation.
+
+Planning to apply for @rpcfast Focus access. RPC Fast integration is not yet validated; gRPC isn't required for this MVP.
+
+--------------------
+
+8/8 Looking for feedback from Solana builders:
+
+When a transaction fails, which evidence do you need first? What's missing from your current debugging workflow?
+
+The preview is private for now. Replies will help shape the next iteration. #Solana #BuildInPublic
