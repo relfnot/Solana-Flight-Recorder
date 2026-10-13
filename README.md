@@ -89,3 +89,11 @@ This repository does not create Colosseum, RPC Fast, X, Telegram or Discord acco
 - [RPC Fast introduction](https://docs.rpcfast.com/rpc-fast-saas-solana/introduction)
 
 The transaction-v1 requirement was verified on 11 October 2026 after a live request returned error -32015 with a version-0-only configuration.
+
+## Public GitHub Pages demo
+
+Website: https://relfnot.github.io/Solana-Flight-Recorder/
+
+The public static viewer supports synthetic demos, a historical mainnet recording, local JSON import, logs, balances, and JSON/Markdown export. Live RPC lookup requires the server deployment or local capture CLI. No credentials belong in the Pages build.
+
+Run `npm run build:pages` to build `dist-pages/`. Pushes to `main` automatically build and deploy through GitHub Actions. The original server deployment remains available as a separate build target.
